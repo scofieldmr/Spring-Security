@@ -13,13 +13,12 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .cors((cors)-> cors.disable())
                 .csrf((csrf)-> csrf.disable())
                 .authorizeHttpRequests((registry ->
                         registry
                                 .anyRequest().authenticated()))
                 .oauth2Login(oAuth2Login ->
-                        oAuth2Login.defaultSuccessUrl("http://localhost:3000/dashboard",true))
+                        oAuth2Login.defaultSuccessUrl("/home",true))
                 .build();
     }
 }
